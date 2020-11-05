@@ -1,3 +1,4 @@
+import { SigningTransactionService } from './../../service/signing-transaction.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly signingTransactionService: SigningTransactionService) { }
 
   ngOnInit(): void {
   }

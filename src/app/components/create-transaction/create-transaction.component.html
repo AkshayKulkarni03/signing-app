@@ -1,0 +1,60 @@
+<form id="create-sign-form" class="example-form" [formGroup]="createSignRequestForm" (ngSubmit)="onSubmit()">
+    <mat-card class="margin-b-3">
+        <mat-card-header>
+            <mat-card-title>Signer Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <table class="example-form__example-full-width">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-form__example-full-width" appearance="outline">
+                            <mat-label>First name</mat-label>
+                            <input matInput type="text" formControlName="firstName" required>
+                            <mat-error *ngIf="checkError('firstName', 'required')">First Name is required</mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-form__example-full-width" appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput type="text" formControlName="lastName" required>
+                            <mat-error *ngIf="checkError('lastName', 'required')">Last Name is required</mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <div class="example-form__example-full-width">
+                <mat-form-field class="example-form__example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="Email Id" formControlName="email" required>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngIf="checkError('email', 'required')">Email Id is required</mat-error>
+                    <mat-error *ngIf="checkError('email', 'email')">Please provide correct email id</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-form__example-full-width">
+                <mat-form-field class="example-form__example-full-width">
+                    <mat-label>Mobile</mat-label>
+                    <input type="tel" matInput placeholder="" formControlName="phone" required>
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-error *ngIf="checkError('phone', 'required')">Phone Number is required</mat-error>
+                    <mat-error *ngIf="checkError('phone', 'pattern')">Please provide corect phone Number</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="margin-b-3">
+        <mat-card-header>
+            <mat-card-title>Upload Documents</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="example-form__example-full-width">
+                <input matInput [hidden]="true">
+                <ng-container [ngTemplateOutlet]="content">
+                    <input type="file" formControlName="file" id="pdfFileUpload" required accept="application/pdf">
+                    <mat-error *ngIf="checkError('file', 'required')">PDF File Is required</mat-error>
+                </ng-container>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!createSignRequestForm.valid">Submit</button>
+</form>

@@ -24,6 +24,11 @@ c8-8.4,17.7-16.8,41.2-16.8c22.6,0,36.8,19,37.6,31V471v0.4v21.3h-19v-25.2v-72.2c0
 c-13.3,0-30.6,12-31,24.4v77.5v0.4v20.8H42.5v-21.3v-96.1v-17.7h3.5h10.6L61.1,357.6L61.1,357.6z"></path>
   </svg>
 </span>
-    <span class="example-spacer"></span>
+    <span></span>
+    <nav mat-tab-nav-bar backgroundColor="primary">
+        <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">{{link.label}}</a>
+    </nav>
 </mat-toolbar>
-<app-overview></app-overview>
+<section id="main" class="main-container">
+    <router-outlet></router-outlet>
+</section>
