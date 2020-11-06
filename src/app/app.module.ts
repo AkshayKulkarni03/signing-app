@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,11 +36,12 @@ import { HttpRequestInterceptor } from './interceptors/http-request.interceptor'
     MatToolbarModule,
     MatIconModule,
     MatTabsModule,
+    MatButtonModule,
     MatInputModule,
     MatCardModule,
+    MatTableModule,
     MatProgressBarModule,
-    MatDividerModule,
-    MatButtonModule
+    MatDividerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
