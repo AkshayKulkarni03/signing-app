@@ -1,0 +1,24 @@
+<form id="create-sign-form" class="example-form" [formGroup]="signingForm" (ngSubmit)="onSubmit()">
+    <mat-card class="margin-b-3">
+        <mat-card-header>
+            <mat-card-title>Start Signing</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-card class="margin-b-3">
+                <mat-card-header>
+                    <mat-card-title>Please Provide Transaction Id</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field class="example-form__example-full-width" appearance="outline">
+                        <mat-label>Transaction Id</mat-label>
+                        <input matInput type="text" formControlName="id" required>
+                        <mat-error *ngIf="checkError('id', 'required')">Transaction Id is required</mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="warn" type="submit" [disabled]="!signingForm.valid">Go to Signing Screen</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -10,7 +10,7 @@ import { SigningTransactionService } from './../../service/signing-transaction.s
 })
 export class OverviewComponent implements OnInit {
 
-  displayedColumns = ['position', 'name', 'email', 'phone', 'file'];
+  displayedColumns = ['position', 'name', 'email', 'phone', 'file', 'verify'];
   dataSource = new MatTableDataSource<SigerDetails>();
   private signerDetails: SigerDetails[] = [];
 
@@ -30,4 +30,7 @@ export class OverviewComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  downloadDocument(id: string, fileName: string): void {
+    this.signingTransactionService.getSignedDocument(id, fileName).subscribe((file) => window.open(URL.createObjectURL(file)));
+  }
 }

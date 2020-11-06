@@ -8,7 +8,7 @@
 
         <!-- Position Column -->
         <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <th id="th-no" mat-header-cell *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element"> {{element.position}} </td>
         </ng-container>
 
@@ -30,9 +30,17 @@
         <ng-container matColumnDef="file">
             <th id="th-file" mat-header-cell *matHeaderCellDef> File </th>
             <td mat-cell *matCellDef="let element">
-                <button mat-mini-fab color="primary" aria-label="download file button">
+                <button mat-mini-fab color="primary" aria-label="download file button" (click)="downloadDocument(element.transactionId,element.fileName)">
                         <mat-icon>download</mat-icon>
                       </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="verify">
+            <th id="th-verify" mat-header-cell *matHeaderCellDef> Verify </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="warn" aria-label="verify file button">
+                        Mark Verified
+                </button>
             </td>
         </ng-container>
 

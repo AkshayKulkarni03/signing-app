@@ -10,6 +10,7 @@ export class SignerRequest {
     sendSignRequest = false;
     signRequestMessage = 'Kindly review and sign the document';
     daysToRemind = 7;
+    activities: Activities[] = [];
     verifications: Verification[] = [];
 }
 
@@ -24,7 +25,7 @@ export class SigerDetails extends TransactionOverviewRequest {
 export class Transaction {
     Id: string;
     Status: number;
-    Files: FileEntry;
+    Files: Map<string, FileEntry>;
     Seal: boolean;
     Signers: Signer[];
     Receivers: [];
@@ -64,13 +65,22 @@ export class Signer {
     ScribbleNameFixed: boolean;
     Reference: string;
     IntroText: string;
-    Activities: string[];
+    Activities: Activities[];
     RejectReason: string;
     SignUrl: string;
     SignedDateTime: string;
     RejectDateTime: string;
     CreatedDateTime: string;
     ModifiedDateTime: string;
+}
+
+export class Activities {
+    id: string;
+
+    code: number;
+    activities: string;
+    info: string;
+    creationDateTime: string;
 }
 
 export class Verification {

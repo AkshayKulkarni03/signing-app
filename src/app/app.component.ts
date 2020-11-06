@@ -10,7 +10,8 @@ export class AppComponent implements OnInit {
   title = 'signing-app';
   navLinks = [
     { label: 'Home', link: './home', index: 0 },
-    { label: 'Create Singing Request', link: './create', index: 1 }
+    { label: 'Create Singing Request', link: './create', index: 1 },
+    { label: 'Sign Document', link: './sign', index: 2 },
   ];
   activeLinkIndex = -1;
 

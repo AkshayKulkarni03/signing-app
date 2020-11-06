@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { TransactionOverviewRequest } from '../model/signer-transaction-overview.model';
 import { environment } from './../../environments/environment';
 import { handleError } from './../model/handle-error';
@@ -37,8 +37,8 @@ export class SigningTransactionService {
     );
   }
 
-  startSigningTransaction(id: string): void {
-    this.http.put(`${this.apiBaseUrl}transaction/${id}/start`, null).pipe(
+  startSigningTransaction(id: string): Observable<any> {
+    return this.http.put(`${this.apiBaseUrl}transaction/${id}/start`, null).pipe(
       catchError(handleError<any>('Start signing Transaction', id))
     );
   }
@@ -49,9 +49,10 @@ export class SigningTransactionService {
     );
   }
 
-  getSignedDocument(id: string, documentName: string): Observable<any> {
-    return this.http.get<any>(`${this.apiBaseUrl}transaction/${id}/${documentName}`).pipe(
-      catchError(handleError<Transaction>('get signed Transaction file', new Transaction()))
+  getSignedDocument(id: string, documentName: string): Observable<Blob> {
+    return this.http.get<Blob>(`${this.apiBaseUrl}transaction/${id}/file/${documentName}`,{responseType: 'blob' as 'json'}).pipe(
+      map(blob => new Blob([blob], { type: 'application/pdf' })),
+      catchError(handleError<Blob>('get signed document', null))
     );
   }
 

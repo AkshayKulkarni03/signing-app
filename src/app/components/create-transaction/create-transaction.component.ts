@@ -62,6 +62,7 @@ export class CreateTransactionComponent implements OnInit {
 
         signerDetails.fileName = file.name;
 
+        signerRequest.activities = transaction.Signers[0].Activities;
         signerDetails.signers = [signerRequest];
 
         this.signingTransactionService.sendFileForSigning(transaction.Id, file.name, file).subscribe();

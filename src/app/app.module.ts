@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { CreateTransactionComponent } from './components/create-transaction/create-transaction.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
+import { OpenSigningComponent } from './components/open-signing/open-signing.component';
 
 
 
@@ -25,7 +26,8 @@ import { HttpRequestInterceptor } from './interceptors/http-request.interceptor'
   declarations: [
     AppComponent,
     OverviewComponent,
-    CreateTransactionComponent
+    CreateTransactionComponent,
+    OpenSigningComponent
   ],
   imports: [
     BrowserModule,
