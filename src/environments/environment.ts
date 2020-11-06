@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  evidosBaseUrl: 'https://api.signhost.com/api/transaction/',
+  apiBaseUrl: 'http://localhost:9090/api/',
   evidosApplicationKey: 'Application',
   evidosApplicationValue: 'APPKey LmrzsZAzM5T8Dlqo T0stNIIccdgvfFUWaJoZGmeZJuvWkhFw',
   evidosAuthKey: 'Authorization',

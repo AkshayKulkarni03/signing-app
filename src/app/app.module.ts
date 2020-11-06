@@ -10,6 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +42,7 @@ import { HttpRequestInterceptor } from './interceptors/http-request.interceptor'
     MatCardModule,
     MatTableModule,
     MatProgressBarModule,
+    MatSnackBarModule,
     MatDividerModule
   ],
   providers: [

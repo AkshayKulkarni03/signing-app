@@ -1,7 +1,7 @@
-import { SigningOverview, Signer } from './../../model/signing-overview';
-import { SigningTransactionService } from './../../service/signing-transaction.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { SigerDetails } from './../../model/signer-transaction-overview.model';
+import { SigningTransactionService } from './../../service/signing-transaction.service';
 
 @Component({
   selector: 'app-overview',
@@ -11,18 +11,18 @@ import { MatTableDataSource } from '@angular/material/table';
 export class OverviewComponent implements OnInit {
 
   displayedColumns = ['position', 'name', 'email', 'phone', 'file'];
-  dataSource = new MatTableDataSource<SigningOverview>();
+  dataSource = new MatTableDataSource<SigerDetails>();
+  private signerDetails: SigerDetails[] = [];
 
   constructor(private readonly signingTransactionService: SigningTransactionService) { }
 
   ngOnInit(): void {
-    const signingOverview = new SigningOverview();
-    const signer = new Signer();
-    signer.email = 'test@sda.com';
-    signer.mobile = 1232212121;
-    signingOverview.signers = [signer];
-    signingOverview.files = [{ file: 'test' }];
-    this.dataSource.data = [signingOverview];
+    this.signingTransactionService.getAllSigningRequests().subscribe(
+      data => this.signerDetails = data,
+      (error) => console.log('error', error),
+      () => this.dataSource.data = this.signerDetails
+    );
+
   }
 
   applyFilter(event: Event): void {
